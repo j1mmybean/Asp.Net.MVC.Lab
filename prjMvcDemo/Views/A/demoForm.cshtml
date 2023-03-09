@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "demoForm";
+}
+
+<h2>demoForm</h2>
+
+<form method="post">
+    <p>
+        <input type="text" name="txtA" id="txtA"/>X^2+
+        <input type="text" name="txtB" id="txtB"/>X+
+        <input type="text" name="txtC" id="txtC"/> =0
+    </p>
+	<p>
+		<input type="submit" value="OK" /> X = @ViewBag.NUM[3] and @ViewBag.NUM[4]
+        <script>
+            let txtA = document.getElementById("txtA")
+            let txtB = document.getElementById("txtB")
+            let txtC = document.getElementById("txtC")
+            txtA.value = @ViewBag.NUM[0];
+            txtB.value = @ViewBag.NUM[1];
+            txtC.value = @ViewBag.NUM[2];
+        </script>
+	</p>
+</form>
+
+

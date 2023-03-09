@@ -1,0 +1,26 @@
+﻿@model prjMvcDemo.Models.CCustomer
+@{
+	ViewBag.Title = "bindingById";
+	string photo = "Anonymous.png";
+	if (Model != null)
+	{
+		photo = Model.fId + ".png";
+	}
+}
+
+<h2>繫結範例</h2>
+<br />
+@{
+	if (Model == null)
+	{
+		<h3>沒有任何資料</h3>
+	}
+	else
+	{
+		<img src="~/Images/@photo" width="250" />
+		<h3>@Model.fName</h3>
+		<h3>@Model.fPhone</h3>
+	}
+}
+
+
