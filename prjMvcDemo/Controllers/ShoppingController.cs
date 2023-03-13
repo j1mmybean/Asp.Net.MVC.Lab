@@ -1,4 +1,5 @@
-﻿using System;
+﻿using prjMvcDemo.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -23,6 +24,25 @@ namespace prjMvcDemo.Controllers
             }
             ViewBag.FID = id;
             return View();
-        }
-    }
+		}
+		[HttpPost]
+		public ActionResult AddToCart(CAddToCartViewModel vm)
+		{
+			dbDemoEntities db = new dbDemoEntities();
+			tProduct prod = db.tProduct.FirstOrDefault(p => p.fId == vm.txtFId);
+			if (prod != null)
+			{
+				tShoppingCart x = new tShoppingCart();
+				x.fDate = DateTime.Now.ToString("yyyyMMddHHmmss");
+				x.fCustomerId = 1;
+				x.fProductId = vm.txtFId;
+				x.fCount = vm.txtCount;
+				x.fPrice = prod.fPrice;
+				db.tShoppingCart.Add(x);
+				db.SaveChanges();
+			}
+			return RedirectToAction("List");
+		}
+
+	}
 }

@@ -78,7 +78,7 @@ namespace prjMvcDemo.Controllers
 				prod.fName = pIn.fName;
 				prod.fQty = pIn.fQty;
 				prod.fCost = pIn.fCost;
-				prod.fPri = pIn.fPri;
+				prod.fPrice = pIn.fPrice;
 				db.SaveChanges();
 			}
 

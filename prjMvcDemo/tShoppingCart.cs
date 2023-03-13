@@ -16,8 +16,8 @@ namespace prjMvcDemo
     {
         public int fId { get; set; }
         public string fDate { get; set; }
-        public Nullable<int> fCustomreId { get; set; }
-        public Nullable<int> fProductID { get; set; }
+        public Nullable<int> fCustomerId { get; set; }
+        public Nullable<int> fProductId { get; set; }
         public Nullable<int> fCount { get; set; }
         public Nullable<decimal> fPrice { get; set; }
     }

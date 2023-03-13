@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<prjMvcDemo.tProduct>
 
 @{
-    ViewBag.Title = "購物車";
+    ViewBag.Title = "List";
 }
 
-<h2>List</h2>
+<h2>線上購物</h2>
 
 <p>
     @Html.ActionLink("新增商品", "Create")
@@ -20,11 +20,8 @@
         <th>
             @Html.DisplayNameFor(model => model.fQty)
         </th>
-        <th> 
-            @Html.DisplayNameFor(model => model.fCost)
-        </th>
         <th>
-            @Html.DisplayNameFor(model => model.fPri)
+            @Html.DisplayNameFor(model => model.fPrice)
         </th>
         <th></th>
     </tr>
@@ -41,13 +38,10 @@
             @Html.DisplayFor(modelItem => item.fQty)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.fCost)
+            @Html.DisplayFor(modelItem => item.fPrice)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.fPri)
-        </td>
-        <td>
-            @Html.ActionLink("加入購物車", "Edit", new { id=item.fId }) |
+            @Html.ActionLink("加入購物車", "AddToCart", new { id=item.fId }) |
         </td>
     </tr>
 }
