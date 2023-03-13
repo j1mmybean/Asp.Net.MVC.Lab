@@ -26,6 +26,7 @@
                     <td>@c.fPhone</td>
                     <td>@c.fEmail</td>
                     <td>@c.fAddress</td>
+                    <td>@Html.ActionLink("修改", "Edit", "Customer", new { id=c.fId}, null)</td>
                     <td>@Html.ActionLink("刪除", "Delete", "Customer", new { id=c.fId}, new {onclick="return confirm('確定要刪除嗎?')"})</td>
                 </tr>
 			}

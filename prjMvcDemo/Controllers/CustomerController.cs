@@ -20,10 +20,20 @@ namespace prjMvcDemo.Controllers
             (new CCustomerFactory()).delete((int)id);
 			return RedirectToAction("List");
 		}
-        public ActionResult Update(CCustomer customer)
+		public ActionResult Edit(int? id)
+		{
+			if (id == null)
+				return RedirectToAction("List");
+			CCustomer x = (new CCustomerFactory()).queryById((int)id);
+			if (x == null)
+				return RedirectToAction("List");
+			return View(x);
+		}
+		[HttpPost]
+		public ActionResult Edit(CCustomer customer)
         {
             (new CCustomerFactory()).update(customer);
-            return View();
+			return RedirectToAction("List");
 		}
 		public ActionResult Create()
         {

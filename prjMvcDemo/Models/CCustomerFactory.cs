@@ -10,6 +10,9 @@ namespace prjMvcDemo.Models
 {
 	public class CCustomerFactory
 	{
+		static string connStr = "Data Source=LAPTOP-FJ03H6RT;Initial Catalog=dbDemo;Integrated Security=True";
+		//string connStr = @"Data Source=.;Initial Catalog=dbDemo;Integrated Security=True";
+
 		public void create(CCustomer p)
 		{
 			List<SqlParameter> paras = new List<SqlParameter>();
@@ -97,7 +100,7 @@ namespace prjMvcDemo.Models
 		private static void sqlConn(string sql, List<SqlParameter> paras)
 		{
 			SqlConnection con = new SqlConnection();
-			con.ConnectionString = @"Data Source =.; Initial Catalog = dbDemo; Integrated Security = True";
+			con.ConnectionString = connStr;
 			using (con)
 			{
 				con.Open();
@@ -129,7 +132,7 @@ namespace prjMvcDemo.Models
 		{
 			List<CCustomer> list = new List<CCustomer>();
 			SqlConnection con = new SqlConnection();
-			con.ConnectionString = @"Data Source =.; Initial Catalog = dbDemo; Integrated Security = True";
+			con.ConnectionString = connStr;
 			con.Open();
 
 			SqlCommand cmd = new SqlCommand(sql, con);
