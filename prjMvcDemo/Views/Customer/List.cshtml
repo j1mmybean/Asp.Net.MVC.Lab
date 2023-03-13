@@ -1,21 +1,28 @@
 ﻿@using prjMvcDemo.Models
 @model List<CCustomer>
 @{
-    ViewBag.Title = "List";
+	ViewBag.Title = "List";
 }
 
 <h2>客戶資料一覽表</h2>
 <a href="~/Customer/Create">新增客戶</a>
+@using (Html.BeginForm())
+{
+	<label>關鍵字</label>
+	@Html.TextBox("txtKeyword");
+	<input type="submit" value="查詢">
+}
+
 <p>
-    <table border="1">
-        <tr>
-            <td>序</td>
-            <td>姓名</td>
-            <td>電話</td>
-            <td>電子郵件</td>
-            <td>地址</td>
-        </tr>
-        @{ 
+	<table class="table table-hover">
+		<tr>
+			<td>序</td>
+			<td>姓名</td>
+			<td>電話</td>
+			<td>電子郵件</td>
+			<td>地址</td>
+		</tr>
+		@{
 			int count = 0;
 			foreach (CCustomer c in Model)
 			{
@@ -30,7 +37,7 @@
                     <td>@Html.ActionLink("刪除", "Delete", "Customer", new { id=c.fId}, new {onclick="return confirm('確定要刪除嗎?')"})</td>
                 </tr>
 			}
-        }
-    </table>
+		}
+	</table>
 </p>
 

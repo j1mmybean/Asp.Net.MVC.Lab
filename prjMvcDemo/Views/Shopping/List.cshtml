@@ -1,0 +1,55 @@
+﻿@model IEnumerable<prjMvcDemo.tProduct>
+
+@{
+    ViewBag.Title = "購物車";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("新增商品", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            序
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fQty)
+        </th>
+        <th> 
+            @Html.DisplayNameFor(model => model.fCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fPri)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fQty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fPri)
+        </td>
+        <td>
+            @Html.ActionLink("加入購物車", "Edit", new { id=item.fId }) |
+        </td>
+    </tr>
+}
+
+</table>
