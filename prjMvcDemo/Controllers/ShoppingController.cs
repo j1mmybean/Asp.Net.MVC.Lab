@@ -1,4 +1,5 @@
-﻿using prjMvcDemo.ViewModels;
+﻿using prjMvcDemo.Models;
+using prjMvcDemo.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,15 @@ namespace prjMvcDemo.Controllers
 {
     public class ShoppingController : Controller
     {
+		public ActionResult CartView()
+		{
+			List<CShoppingCartItem> cart =  Session[CDictionary.SK_PURCHASED_PRODUCTS_LIST] as List<CShoppingCartItem>;
+			if (cart == null)
+			{
+				return RedirectToAction("List");
+			}
+			return View(cart);
+		}
         // GET: Shopping
         public ActionResult List()
         {
@@ -17,6 +27,15 @@ namespace prjMvcDemo.Controllers
             return View(products);
         }
         public ActionResult AddToCart(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("List");
+            }
+            ViewBag.FID = id;
+            return View();
+		}
+        public ActionResult AddToSession(int? id)
         {
             if (id == null)
             {
@@ -43,6 +62,28 @@ namespace prjMvcDemo.Controllers
 			}
 			return RedirectToAction("List");
 		}
-
+		[HttpPost]
+		public ActionResult AddToSession(CAddToCartViewModel vm)
+		{
+			dbDemoEntities db = new dbDemoEntities();
+			tProduct prod = db.tProduct.FirstOrDefault(p => p.fId == vm.txtFId);
+			if (prod != null)
+			{
+				List<CShoppingCartItem> cart = Session[CDictionary.SK_PURCHASED_PRODUCTS_LIST] as List<CShoppingCartItem>;
+				if (cart == null)
+				{
+					cart = new List<CShoppingCartItem>();
+					Session[CDictionary.SK_PURCHASED_PRODUCTS_LIST] = cart;
+				}
+				CShoppingCartItem x = new CShoppingCartItem()
+				{
+					productId = vm.txtFId,
+					count = vm.txtCount,
+					price = (decimal)prod.fPrice,
+				};
+				cart.Add(x);
+			}
+			return RedirectToAction("List");
+		}
 	}
 }

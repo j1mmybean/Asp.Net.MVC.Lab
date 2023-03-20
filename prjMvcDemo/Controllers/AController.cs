@@ -11,6 +11,51 @@ namespace prjMvcDemo.Controllers
 {
 	public class AController : Controller
 	{
+		static int count = 0;
+		public ActionResult showCountByCookie()
+		{
+			int count = 0;
+			HttpCookie c = Request.Cookies["Count"];
+			if (c != null)
+			{
+				count = Convert.ToInt32(c.Value);
+			}
+			count++;
+			c = new HttpCookie("Count");
+			c.Value = count.ToString();
+			c.Expires = DateTime.Now.AddSeconds(20);
+			Response.Cookies.Add(c);
+			ViewBag.Count = count;
+			return View();
+		}
+		public ActionResult showCountBySession()
+		{
+			int count = 0;
+			if (Session["Count"] != null)
+			{
+				count = (int)Session["Count"];
+			}
+			count++;
+			Session["Count"] = count;
+			ViewBag.Count = count;
+			return View();
+		}
+		public ActionResult showCount()
+		{
+			count++;
+			ViewBag.Count = count;
+			return View();
+		}
+		public ActionResult fileUploadDemo()
+		{
+			return View();
+		}
+		[HttpPost]
+		public ActionResult fileUploadDemo(HttpPostedFileBase photo)
+		{
+			photo.SaveAs(@"C:\MVCLab\01.jpg");
+			return View();
+		}
 		public ActionResult demoForm()
 		{
 			double a = Convert.ToDouble(Request.Form["txtA"]);

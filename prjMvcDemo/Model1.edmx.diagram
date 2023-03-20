@@ -6,8 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="cdd10c372fa4418480e65145f03284f2" Name="Diagram1">
         <EntityTypeShape EntityType="dbDemoModel.tCustomer" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="dbDemoModel.tShoppingCart" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="dbDemoModel.tProduct" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="dbDemoModel.tShoppingCart" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

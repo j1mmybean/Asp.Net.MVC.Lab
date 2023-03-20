@@ -75,6 +75,12 @@ namespace prjMvcDemo.Controllers
 			tProduct prod = db.tProduct.FirstOrDefault(p => p.fId == pIn.fId);
 			if (prod != null)
 			{
+				if (pIn.photo != null)
+				{
+					string photoName = Guid.NewGuid().ToString() + ".jpg";
+					pIn.photo.SaveAs(Server.MapPath("../../Images/" + photoName));
+					prod.fImagePath = photoName;
+				}
 				prod.fName = pIn.fName;
 				prod.fQty = pIn.fQty;
 				prod.fCost = pIn.fCost;

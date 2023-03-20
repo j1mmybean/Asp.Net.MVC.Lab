@@ -31,9 +31,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.fId)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fName)
-        </td>
+		<td>
+			<img src="~/Images/@item.fImagePath" width="150" />
+			@Html.DisplayFor(modelItem => item.fName)
+		</td>
         <td>
             @Html.DisplayFor(modelItem => item.fQty)
         </td>
@@ -42,6 +43,7 @@
         </td>
         <td>
             @Html.ActionLink("加入購物車", "AddToCart", new { id=item.fId }) |
+            @Html.ActionLink("加入購物車", "AddToSession", new { id=item.fId }) |
         </td>
     </tr>
 }

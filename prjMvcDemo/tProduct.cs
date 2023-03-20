@@ -9,15 +9,22 @@
 
 namespace prjMvcDemo
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class tProduct
-    {
-        public int fId { get; set; }
-        public string fName { get; set; }
-        public Nullable<int> fQty { get; set; }
-        public Nullable<decimal> fCost { get; set; }
-        public Nullable<decimal> fPrice { get; set; }
-    }
+	using System;
+	using System.Collections.Generic;
+	using System.ComponentModel;
+	using System.ComponentModel.DataAnnotations;
+	using System.Web;
+
+	public partial class tProduct
+	{
+		public int fId { get; set; }
+		[Required(ErrorMessage = "必填")]
+		public string fName { get; set; }
+		[DisplayName("庫存量")]
+		public Nullable<int> fQty { get; set; }
+		public Nullable<decimal> fCost { get; set; }
+		public Nullable<decimal> fPrice { get; set; }
+		public string fImagePath { get; set; }
+		public HttpPostedFileBase photo { get; set; }
+	}
 }
