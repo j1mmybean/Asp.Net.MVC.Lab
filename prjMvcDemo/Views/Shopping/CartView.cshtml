@@ -1,0 +1,58 @@
+﻿@model IEnumerable<prjMvcDemo.Models.CShoppingCartItem>
+
+@{
+	ViewBag.Title = "CartView";
+}
+
+<h2>CartView</h2>
+
+<p>
+	@Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.productId)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.count)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.price)
+		</th>
+		<th></th>
+	</tr>
+
+@{	int count = 0;
+	decimal pay = 0;
+	decimal tax = 0;
+	decimal sum = 0;
+	foreach (var item in Model)
+	{
+		count++;
+		sum += item.小計;
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.productId)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.count)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.price)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.小計)
+			</td>
+			<td>
+				@Html.ActionLink("取消", "List", new { /* id=item.PrimaryKey */ }) |
+			</td>
+		</tr>
+	}
+	pay = sum * 1.05M;
+	tax = pay - sum;
+}
+</table>
+<li>交易金額:@sum.ToString("###,###,##0")</li>
+<li>稅    額:@tax.ToString("###,###,##0")</li>
+<li>應付金額:@pay.ToString("###,###,##0")</li>

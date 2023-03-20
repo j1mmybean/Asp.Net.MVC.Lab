@@ -80,6 +80,7 @@ namespace prjMvcDemo.Controllers
 					productId = vm.txtFId,
 					count = vm.txtCount,
 					price = (decimal)prod.fPrice,
+					product = prod,
 				};
 				cart.Add(x);
 			}

@@ -44,6 +44,7 @@
         <td>
             @Html.ActionLink("加入購物車", "AddToCart", new { id=item.fId }) |
             @Html.ActionLink("加入購物車", "AddToSession", new { id=item.fId }) |
+            @Html.ActionLink("檢視清單", "CartView", new { id=item.fId }) |
         </td>
     </tr>
 }
