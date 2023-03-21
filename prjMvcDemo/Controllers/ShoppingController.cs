@@ -19,10 +19,10 @@ namespace prjMvcDemo.Controllers
 			}
 			return View(cart);
 		}
-        // GET: Shopping
-        public ActionResult List()
-        {
-            IEnumerable<tProduct> products = from p in (new dbDemoEntities()).tProduct
+		// GET: Shopping
+		public ActionResult List()
+		{
+			IEnumerable<tProduct> products = from p in (new dbDemoEntities()).tProduct
                            select p;
             return View(products);
         }
